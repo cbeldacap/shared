@@ -34,8 +34,8 @@ export function backendFactory(backend: MockBackend, options: BaseRequestOptions
             if (connection.request.url.endsWith('/api/save') && connection.request.method === RequestMethod.Post) {
                 let savedBook: Book;
                 let bookToSave = new Book();
-                bookToSave.authors = JSON.parse(connection.request.getBody()).book._authors;
-                bookToSave.title = JSON.parse(connection.request.getBody()).book._title;
+                bookToSave.authors = JSON.parse(connection.request.getBody()).book.authors;
+                bookToSave.title = JSON.parse(connection.request.getBody()).book.title;
                 if (bookToSave.id) {
                   savedBook = db.books.find(book => book.id === bookToSave.id);
                 }
